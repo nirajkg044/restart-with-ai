@@ -1,6 +1,479 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top 10 AI Chat Interfaces</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #e8e8e8;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #333;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      color: black;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      font-weight: 300;
+    }
+
+    .table-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .ai-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: visible;
+    }
+
+    .ai-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    }
+
+    .ai-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .logo-container {
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .info-section {
+      flex: 1;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .info-icon {
+      cursor: help;
+      position: relative;
+      width: 24px;
+      height: 24px;
+      background: #667eea;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+
+    .info-icon:hover {
+      background: #764ba2;
+      transform: scale(1.1);
+    }
+
+    .tooltip-container {
+      position: relative;
+      display: inline-block;
+      z-index: 10;
+    }
+
+    .tooltip-text {
+      visibility: hidden;
+      width: 280px;
+      background-color: #2d3748;
+      color: #fff;
+      text-align: left;
+      border-radius: 8px;
+      padding: 1rem;
+      position: absolute;
+      z-index: 1000;
+      bottom: 130%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      border: 1px solid #667eea;
+    }
+
+    .tooltip-text::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #2d3748;
+    }
+
+    .tooltip-container:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .link-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f0f0;
+      border-radius: 8px;
+      color: #667eea;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .link-icon:hover {
+      background: #667eea;
+      color: white;
+      transform: scale(1.1) rotate(45deg);
+    }
+
+    .description {
+      color: #6b7280;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .table-container {
+        grid-template-columns: 1fr;
+      }
+
+      .header h1 {
+        font-size: 1.8rem;
+      }
+
+      .card-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .info-section {
+        text-align: center;
+      }
+
+      .tooltip-text {
+        bottom: auto;
+        top: 130%;
+      }
+
+      .tooltip-text::after {
+        top: auto;
+        bottom: 100%;
+        border-top-color: transparent;
+        border-bottom-color: #2d3748;
+      }
+    }
+  </style>
+</head>
 <body>
-  <h1>Welcome to my website!</h1>
-  <p>This is my personal GitHub Pages site.</p>
+  <div class="container">
+    <div class="header">
+      <h1>🤖 AI Chat Interface in my To-Do list</h1>
+           <p>Artificial intelligence is evolving rapidly with multiple companies developing highly productive language models. With so many interfaces, models, and concepts emerging constantly, it can be challenging to know where to start. This curated guide brings together the most popular AI chatbot platforms in one convenient hub—empowering you to explore, compare, and access the right tools to fuel your learning and productivity.</p>
+    </div>
+
+    <div class="table-container">
+      <!-- 1. ChatGPT -->
+      <div class="ai-card">
+        <div class="card-content">
+          <div class="logo-container">🧠</div>
+          <div class="info-section">
+            <div class="title-row">
+              <span class="title">ChatGPT</span>
+              <div class="tooltip-container">
+                <div class="info-icon">i</div>
+                <div class="tooltip-text">
+                  <strong>Pros:</strong> Advanced reasoning, versatile, fastest growing<br/>
+                  <strong>Cons:</strong> Knowledge cutoff, limited real-time info
+                </div>
+              </div>
+              <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="link-icon">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <p class="description">OpenAI's flagship conversational AI - most popular & versatile</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Gemini -->
+      <div class="ai-card">
+        <div class="card-content">
+          <div class="logo-container">✨</div>
+          <div class="info-section">
+            <div class="title-row">
+              <span class="title">Gemini</span>
+              <div class="tooltip-container">
+                <div class="info-icon">i</div>
+                <div class="tooltip-text">
+                  <strong>Pros:</strong> Real-time web access, multimodal, free access<br/>
+                  <strong>Cons:</strong> Newer model, less refined language
+                </div>
+              </div>
+              <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="link-icon">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <p class="description">Google's advanced AI with real-time internet access</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Claude -->
+      <div class="ai-card">
+        <div class="card-content">
+          <div class="logo-container">🎭</div>
+          <div class="info-section">
+            <div class="title-row">
+              <span class="title">Claude</span>
+              <div class="tooltip-container">
+                <div class="info-icon">i</div>
+                <div class="tooltip-text">
+                  <strong>Pros:</strong> Safe & reliable, excellent code, long context<br/>
+                  <strong>Cons:</strong> More conservative, slower responses
+                </div>
+              </div>
+              <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="link-icon">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <p class="description">Anthropic's safety-focused AI assistant</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Microsoft Copilot -->
+      <div class="ai-card">
+        <div class="card-content">
+          <div class="logo-container">⚡</div>
+          <div class="info-section">
+            <div class="title-row">
+              <span class="title">Microsoft Copilot</span>
+              <div class="tooltip-container">
+                <div class="info-icon">i</div>
+                <div class="tooltip-text">
+                  <strong>Pros:</strong> Bing integration, real-time web, Windows built-in<br/>
+                  <strong>Cons:</strong> Limited customization, Bing dependent
+                </div>
+              </div>
+              <a href="https://copilot.microsoft.com" target="_blank" rel="noopener noreferrer" class="link-icon">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <p class="description">Microsoft's AI with Bing search integration</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Perplexity AI -->
+      <div class="ai-card">
+        <div class="card-content">
+          <div class="logo-container">🔍</div>
+          <div class="info-section">
+            <div class="title-row">
+              <span class="title">Perplexity AI</span>
+              <div class="tooltip-container">
+                <div class="info-icon">i</div>
+                <div class="tooltip-text">
+                  <strong>Pros:</strong> Citation sources, up-to-date info, research-focused<br/>
+                  <strong>Cons:</strong> Smaller user base, limited features
+                </div>
+              </div>
+              <a href="https://perplexity.ai" target="_blank" rel="noopener noreferrer" class="link-icon">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <p class="description">AI search engine with sourced answers</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. HuggingChat -->
+      <div class="ai-card">
+        <div class="card-content">
+          <div class="logo-container">🤗</div>
+          <div class="info-section">
+            <div class="title-row">
+              <span class="title">HuggingChat</span>
+              <div class="tooltip-container">
+                <div class="info-icon">i</div>
+                <div class="tooltip-text">
+                  <strong>Pros:</strong> Open-source, free, community-driven<br/>
+                  <strong>Cons:</strong> Less powerful, fewer features
+                </div>
+              </div>
+              <a href="https://huggingface.co/chat" target="_blank" rel="noopener noreferrer" class="link-icon">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <p class="description">Hugging Face's open-source chat interface</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Meta Llama 2 -->
+      <div class="ai-card">
+        <div class="card-content">
+          <div class="logo-container">🦙</div>
+          <div class="info-section">
+            <div class="title-row">
+              <span class="title">Meta Llama 2</span>
+              <div class="tooltip-container">
+                <div class="info-icon">i</div>
+                <div class="tooltip-text">
+                  <strong>Pros:</strong> Open-source, highly customizable, no usage limits<br/>
+                  <strong>Cons:</strong> Self-hosted, requires technical setup
+                </div>
+              </div>
+              <a href="https://llama2.ai" target="_blank" rel="noopener noreferrer" class="link-icon">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <p class="description">Meta's open-source large language model</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Mistral Chat -->
+      <div class="ai-card">
+        <div class="card-content">
+          <div class="logo-container">🌪️</div>
+          <div class="info-section">
+            <div class="title-row">
+              <span class="title">Mistral Chat</span>
+              <div class="tooltip-container">
+                <div class="info-icon">i</div>
+                <div class="tooltip-text">
+                  <strong>Pros:</strong> Efficient, fast responses, open weights<br/>
+                  <strong>Cons:</strong> Lesser known, smaller community
+                </div>
+              </div>
+              <a href="https://chat.mistral.ai" target="_blank" rel="noopener noreferrer" class="link-icon">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <p class="description">Mistral AI's efficient language model</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Groq Chat -->
+      <div class="ai-card">
+        <div class="card-content">
+          <div class="logo-container">⚙️</div>
+          <div class="info-section">
+            <div class="title-row">
+              <span class="title">Groq Chat</span>
+              <div class="tooltip-container">
+                <div class="info-icon">i</div>
+                <div class="tooltip-text">
+                  <strong>Pros:</strong> Lightning-fast, low latency, API access<br/>
+                  <strong>Cons:</strong> Limited model selection, niche use case
+                </div>
+              </div>
+              <a href="https://groq.com" target="_blank" rel="noopener noreferrer" class="link-icon">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <p class="description">Groq's ultra-fast AI inference platform</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Pi AI -->
+      <div class="ai-card">
+        <div class="card-content">
+          <div class="logo-container">🥧</div>
+          <div class="info-section">
+            <div class="title-row">
+              <span class="title">Pi AI</span>
+              <div class="tooltip-container">
+                <div class="info-icon">i</div>
+                <div class="tooltip-text">
+                  <strong>Pros:</strong> Empathetic, conversational, personal AI assistant<br/>
+                  <strong>Cons:</strong> Less powerful, limited capabilities
+                </div>
+              </div>
+              <a href="https://pi.ai" target="_blank" rel="noopener noreferrer" class="link-icon">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <p class="description">Inflection's personal AI companion</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
