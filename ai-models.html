@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LLM Models Reference</title>
+
+<style>
+
+body{
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu;
+    background:#0d1117;
+    color:#e6edf3;
+    margin:40px;
+}
+
+h1{
+    font-size:28px;
+}
+
+p{
+    max-width:900px;
+    color:#9da7b3;
+    line-height:1.6;
+}
+
+table{
+    width:100%;
+    margin-top:30px;
+    border-collapse:separate;
+    border-spacing:20px;
+}
+
+td{
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:10px;
+    padding:18px;
+    position:relative;
+    transition:0.2s;
+}
+
+td:hover{
+    border-color:#58a6ff;
+    transform:translateY(-2px);
+}
+
+.model-name{
+    font-size:18px;
+    font-weight:600;
+}
+
+.version{
+    color:#58a6ff;
+    margin-left:6px;
+    cursor:pointer;
+}
+
+.model-id{
+    font-family:monospace;
+    color:#9da7b3;
+}
+
+.copy-btn{
+    margin-left:8px;
+    padding:2px 6px;
+    font-size:12px;
+    border-radius:4px;
+    border:none;
+    background:#238636;
+    color:white;
+    cursor:pointer;
+}
+
+.desc{
+    margin-top:10px;
+    font-size:14px;
+    color:#c9d1d9;
+}
+
+.param-bar{
+    margin-top:10px;
+    height:6px;
+    background:#30363d;
+    border-radius:5px;
+    overflow:hidden;
+}
+
+.param-fill{
+    height:100%;
+    background:#58a6ff;
+}
+
+.hover-card{
+    display:none;
+    position:absolute;
+    top:50px;
+    left:20px;
+    width:260px;
+    background:#0d1117;
+    border:1px solid #30363d;
+    padding:12px;
+    border-radius:8px;
+    font-size:13px;
+    z-index:10;
+}
+
+td:hover .hover-card{
+    display:block;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Top Large Language Models</h1>
+
+<p>
+Large Language Models (LLMs) are transformer-based neural networks trained on massive text corpora to approximate the probability distribution of language sequences. 
+Given tokens x₁…xₙ the model predicts the next token using P(xₜ | x&lt;t). 
+Self-attention layers compute contextual relationships using Attention(Q,K,V)=softmax(QKᵀ/√d)V. 
+With billions or trillions of parameters these models learn representations that enable reasoning, coding, summarization, and autonomous AI agent behavior. 
+This page provides a developer-focused overview of major LLM systems currently used in AI engineering.
+</p>
+
+
+<table>
+
+<tr>
+
+<td>
+
+<div class="model-name">ChatGPT / GPT <span class="version">V</span></div>
+
+<div class="model-id">gpt-4o 
+<button class="copy-btn" onclick="copy('gpt-4o')">copy</button>
+</div>
+
+<div class="desc">
+General reasoning engine used for coding assistants, AI agents and complex research tasks.
+</div>
+
+<div class="param-bar"><div class="param-fill" style="width:95%"></div></div>
+
+<div class="hover-card">
+<strong>Versions:</strong> GPT-3, 3.5, 4, 4o, 5<br>
+<strong>Strength:</strong> reasoning, coding, multimodal AI<br>
+<strong>Parameters:</strong> undisclosed (trillion scale)
+</div>
+
+</td>
+
+
+<td>
+
+<div class="model-name">Gemini <span class="version">V</span></div>
+
+<div class="model-id">gemini-pro 
+<button class="copy-btn" onclick="copy('gemini-pro')">copy</button>
+</div>
+
+<div class="desc">
+Multimodal AI designed for large-context reasoning and enterprise AI systems.
+</div>
+
+<div class="param-bar"><div class="param-fill" style="width:90%"></div></div>
+
+<div class="hover-card">
+<strong>Versions:</strong> Gemini 1.5, 2.5, Ultra, Flash<br>
+<strong>Strength:</strong> multimodal reasoning<br>
+<strong>Parameters:</strong> undisclosed
+</div>
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+
+<div class="model-name">Claude <span class="version">V</span></div>
+
+<div class="model-id">claude-sonnet 
+<button class="copy-btn" onclick="copy('claude-sonnet')">copy</button>
+</div>
+
+<div class="desc">
+Strong document reasoning and safe enterprise AI assistant.
+</div>
+
+<div class="param-bar"><div class="param-fill" style="width:88%"></div></div>
+
+<div class="hover-card">
+<strong>Versions:</strong> Haiku, Sonnet, Opus<br>
+<strong>Strength:</strong> long context reasoning<br>
+<strong>Parameters:</strong> undisclosed
+</div>
+
+</td>
+
+
+<td>
+
+<div class="model-name">LLaMA <span class="version">V</span></div>
+
+<div class="model-id">llama-3-70b
+<button class="copy-btn" onclick="copy('llama-3-70b')">copy</button>
+</div>
+
+<div class="desc">
+Open-weight LLM used widely for research and self-hosted AI systems.
+</div>
+
+<div class="param-bar"><div class="param-fill" style="width:80%"></div></div>
+
+<div class="hover-card">
+<strong>Versions:</strong> LLaMA 2, 3, 3.1<br>
+<strong>Strength:</strong> open source ecosystem<br>
+<strong>Parameters:</strong> up to 405B
+</div>
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+
+<div class="model-name">Gemma <span class="version">V</span></div>
+
+<div class="model-id">gemma-7b
+<button class="copy-btn" onclick="copy('gemma-7b')">copy</button>
+</div>
+
+<div class="desc">
+Lightweight model optimized for edge inference and experimentation.
+</div>
+
+<div class="param-bar"><div class="param-fill" style="width:60%"></div></div>
+
+<div class="hover-card">
+<strong>Versions:</strong> 2B, 7B, Gemma 3<br>
+<strong>Strength:</strong> efficient deployment<br>
+<strong>Parameters:</strong> up to 27B
+</div>
+
+</td>
+
+
+<td>
+
+<div class="model-name">Mistral / Mixtral <span class="version">V</span></div>
+
+<div class="model-id">mistral-large
+<button class="copy-btn" onclick="copy('mistral-large')">copy</button>
+</div>
+
+<div class="desc">
+High efficiency mixture-of-experts architecture optimized for speed.
+</div>
+
+<div class="param-bar"><div class="param-fill" style="width:82%"></div></div>
+
+<div class="hover-card">
+<strong>Versions:</strong> Mistral 7B, Mixtral 8x7B<br>
+<strong>Strength:</strong> fast inference<br>
+<strong>Parameters:</strong> up to ~56B
+</div>
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+
+<div class="model-name">DeepSeek <span class="version">V</span></div>
+
+<div class="model-id">deepseek-r1
+<button class="copy-btn" onclick="copy('deepseek-r1')">copy</button>
+</div>
+
+<div class="desc">
+Mathematical reasoning and algorithmic problem solving.
+</div>
+
+<div class="param-bar"><div class="param-fill" style="width:87%"></div></div>
+
+<div class="hover-card">
+<strong>Versions:</strong> DeepSeek Chat, Coder, R1<br>
+<strong>Strength:</strong> math + coding reasoning<br>
+<strong>Parameters:</strong> ~67B+
+</div>
+
+</td>
+
+
+<td>
+
+<div class="model-name">Qwen <span class="version">V</span></div>
+
+<div class="model-id">qwen-72b
+<button class="copy-btn" onclick="copy('qwen-72b')">copy</button>
+</div>
+
+<div class="desc">
+Multilingual model used for global AI systems.
+</div>
+
+<div class="param-bar"><div class="param-fill" style="width:78%"></div></div>
+
+<div class="hover-card">
+<strong>Versions:</strong> Qwen 1.5, 2<br>
+<strong>Strength:</strong> multilingual AI<br>
+<strong>Parameters:</strong> up to 235B
+</div>
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+
+<div class="model-name">Grok <span class="version">V</span></div>
+
+<div class="model-id">grok-3
+<button class="copy-btn" onclick="copy('grok-3')">copy</button>
+</div>
+
+<div class="desc">
+Real-time knowledge and social media analytics.
+</div>
+
+<div class="param-bar"><div class="param-fill" style="width:70%"></div></div>
+
+<div class="hover-card">
+<strong>Versions:</strong> Grok 1, 2, 3<br>
+<strong>Strength:</strong> real-time knowledge<br>
+<strong>Parameters:</strong> undisclosed
+</div>
+
+</td>
+
+
+<td>
+
+<div class="model-name">Cohere Command <span class="version">V</span></div>
+
+<div class="model-id">command-r
+<button class="copy-btn" onclick="copy('command-r')">copy</button>
+</div>
+
+<div class="desc">
+Enterprise RAG and AI assistant development.
+</div>
+
+<div class="param-bar"><div class="param-fill" style="width:72%"></div></div>
+
+<div class="hover-card">
+<strong>Versions:</strong> Command, Command R, R+<br>
+<strong>Strength:</strong> enterprise retrieval AI<br>
+<strong>Parameters:</strong> ~52B
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+<script>
+function copy(text){
+navigator.clipboard.writeText(text);
+alert("Model ID copied: " + text);
+}
+</script>
+
+</body>
+</html>
